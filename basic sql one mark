@@ -1,0 +1,84 @@
+AND, OR and NOT
+1.Write a SQL statement selects all fields from "Customers" where country is "Germany" AND city is "Berlin"?
+ANS:
+SELECT * FROM Customers
+WHERE Country='Germany' AND City='Berlin';
+2. The following SQL statement selects all fields from "Customers" where city is "Berlin" OR "München"?
+ANS:
+SELECT * FROM Customers
+WHERE City='Berlin' OR City='München';
+3.Write a SQL statement selects all fields from "Customers" where country is "Germany" OR "Spain"?
+ANS:
+SELECT * FROM Customers
+WHERE Country='Germany' OR Country='Spain';
+4. Write a SQL statement selects all fields from "Customers" where country is NOT "Germany"?
+ANS:
+SELECT * FROM Customers
+WHERE NOT Country='Germany';
+5. Write a SQL statement selects all fields from "Customers" where country is "Germany" AND city must be "Berlin" OR "München" (use parenthesis to form complex expressions)?
+ANS:
+SELECT * FROM Customers
+WHERE Country='Germany' AND (City='Berlin' OR City='München');
+
+
+ORDER BY
+6. Write a  SQL statement selects all customers from the "Customers" table, sorted by the "Country" column?
+ANS:
+SELECT * FROM Customers
+ORDER BY Country;
+7. Write a SQL statement selects all customers from the "Customers" table, sorted DESCENDING by the "Country" column?
+ANS:
+SELECT * FROM Customers
+ORDER BY Country DESC;
+8. Write a SQL statement selects all customers from the "Customers" table, sorted by the "Country" and the "CustomerName" column. This means that it orders by Country, but if some rows have the same Country, it orders them by CustomerName?
+ANS:
+SELECT * FROM Customers
+ORDER BY Country, CustomerName;
+9. Write a SQL statement selects all customers from the "Customers" table, sorted ascending by the "Country" and descending by the "CustomerName" column?
+ANS:
+SELECT * FROM Customers
+ORDER BY Country ASC, CustomerName DESC;
+10.Syntax for update query?
+ANS:
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+
+11. Write a SQL statement updates the first customer (CustomerID = 1) with a new contact person and a new city.
+ANS:
+UPDATE Customers
+SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
+WHERE CustomerID = 1;
+JOINS
+ 1.Write a SQL statement for following SQL statement will select all customers, and any orders they might have
+Ans:
+SELECT Customers.CustomerName, Orders.OrderID
+FROM Customers
+LEFT JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+ORDER BY Customers.CustomerName;
+Group
+2.Write SQL statement lists the number of customers in each country
+Ans:
+SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country;
+
+3. Write SQL deletes the "Email" column from the "Customers" table
+Ans
+ALTER TABLE Customers
+DROP COLUMN Email;
+4.How to create the NOT NULL  Constraint on the "Age" column when the "Persons" table is already created
+Ans
+ALTER TABLE Persons
+MODIFY Age int NOT NULL;
+5.How to drop a UNIQUE constraint in the person table
+Ans
+ALTER TABLE Persons
+DROP INDEX UC_Person;
+
+6.write a sql syntax for creating the view 
+Ans:
+CREATE VIEW view_name AS
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
